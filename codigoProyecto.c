@@ -2,9 +2,14 @@
 #include <string.h>
 
 void mostrarSucursales();
-void mostrarMenu() ;
-
-
+void mostrarMenu();
+void mostrarBebidasCalientes();
+void mostrarBebidasFrias();
+void mostrarComidas();
+void agregarAlCarrito(char *producto, float precio, int calorias);
+void mostrarCarrito();
+void aplicarDescuento(float *total);
+void pagar();
 
 char *sucursales[] = {"Sucursal 1", "Sucursal 2", "Sucursal 3"};
 char *direcciones[] = {"Cerca de CU, Dirección 1", "Cerca de CU, Dirección 2", "Cerca de CU, Dirección 3"};
@@ -25,7 +30,6 @@ char *carritoProductos[50];
 float carritoPrecios[50];
 int carritoCalorias[50];
 int carritoCantidad = 0;
-
 
 int main() {
     int opcion, sucursalSeleccionada, productoSeleccionado;
