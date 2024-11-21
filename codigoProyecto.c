@@ -37,6 +37,7 @@ int carritoCantidad = 0, i;
 
 int main() {
     int opcion, sucursalSeleccionada, productoSeleccionado;
+    printf("Bienvenido a la Cafeteria Cafesyinc\n");
     iniciarSesion();
     mostrarSucursales();
     scanf("%d", &sucursalSeleccionada);
