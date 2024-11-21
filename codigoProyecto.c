@@ -228,7 +228,7 @@ int verificarCuentaUNAM(char *cuenta) {
     // Verificar que la cuenta tenga exactamente 9 dígitos
     if (strlen(cuenta) == 9) {
         for (int i = 0; i < 9; i++) {
-            if (!isdigit(cuenta[i])) {
+            if (cuenta[i] < '0' || cuenta[i] > '9') {
                 return 0; // No es un dígito
             }
         }
