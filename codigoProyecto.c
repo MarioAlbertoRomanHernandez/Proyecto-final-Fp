@@ -18,7 +18,7 @@ int verificarUsuario(char *usuario, char *contrasena);
 
 char *sucursales[] = {"Facultad de Ingenieria", "Facultad de Medicina"};
 char *direcciones[] = {"Cerca de CU, Facultad de Ingenieria", "Cerca de CU, Facultad de Medicina"};
-char *bebidasCalientes[] = {"Americano", "Latte", "Capuchino", "Te Verde", "Infusion"};
+char *bebidasCalientes[] = {"Americano", "Latte", "Capuchino", "Te Verde", "Infusion de llerbas(manzanilla, limon)"};
 float preciosBebidasCalientes[] = {30.0, 40.0, 45.0, 50.0, 25.0};
 int caloriasBebidasCalientes[] = {5, 150, 120, 100, 0};
 char *bebidasFrias[] = {"Americano Frio", "Frappe de Chocolate", "Frappe de Matcha", "Frappe de Cafe Clasico", "Frappe de Moka"};
