@@ -203,4 +203,39 @@ void iniciarSesion() {
 }
 
 void registrarUsuario() {
-    char usuario[50], contras
+    char usuario[50], contrasena[50];
+    printf("Usuario: ");
+    scanf("%s", usuario);
+    printf("Contrasena: ");
+    scanf("%s", contrasena);
+
+    FILE *archivo = fopen("usuarios.txt", "a");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo de usuarios.\n");
+        return;
+    }
+
+    fprintf(archivo, "%s %s\n", usuario, contrasena);
+    fclose(archivo);
+
+    printf("Usuario registrado con exito.\n");
+}
+
+int verificarUsuario(char *usuario, char *contrasena) {
+    char usuarioArchivo[50], contrasenaArchivo[50];
+    FILE *archivo = fopen("usuarios.txt", "r");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo de usuarios.\n");
+        return 0;
+    }
+
+    while (fscanf(archivo, "%s %s", usuarioArchivo, contrasenaArchivo) != EOF) {
+        if (strcmp(usuario, usuarioArchivo) == 0 && strcmp(contrasena, contrasenaArchivo) == 0) {
+            fclose(archivo);
+            return 1;
+        }
+    }
+
+    fclose(archivo);
+    return 0;
+}
