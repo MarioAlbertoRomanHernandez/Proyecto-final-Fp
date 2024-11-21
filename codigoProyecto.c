@@ -120,7 +120,6 @@ void mostrarBebidasCalientes() {
     for (i = 0; i < 5; i++) {
         printf("%d. %s - $%.2f - %d calorias\n", i + 1, bebidasCalientes[i], preciosBebidasCalientes[i], caloriasBebidasCalientes[i]);
     }
-    // Ejemplo de personalización
     printf("Seleccione una bebida caliente para personalizar:\n");
     int seleccion;
     scanf("%d", &seleccion);
@@ -155,11 +154,11 @@ void mostrarSnacks() {
     for (i = 0; i < 5; i++) {
         printf("%d. %s - $%.2f - %d calorias\n", i + 1, snacks[i], preciosSnacks[i], caloriasSnacks[i]);
     }
-    // Ejemplo de personalización
+
     printf("Seleccione un snack para personalizar:\n");
     int seleccion;
     scanf("%d", &seleccion);
-    if (seleccion == 1) { // Yogurt con Fruta y Granola
+    if (seleccion == 1) { 
         printf("Seleccione el tipo de yogurt (1: Natural, 2: Fresa): ");
         int tipoYogurt;
         scanf("%d", &tipoYogurt);
