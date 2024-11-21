@@ -15,10 +15,11 @@ void pagar();
 void iniciarSesion();
 void registrarUsuario();
 int verificarUsuario(char *usuario, char *contrasena);
+int verificarCuentaUNAM(char *cuenta);
 
 char *sucursales[] = {"Facultad de Ingenieria", "Facultad de Medicina"};
 char *direcciones[] = {"Cerca de CU, Facultad de Ingenieria", "Cerca de CU, Facultad de Medicina"};
-char *bebidasCalientes[] = {"Americano", "Latte", "Capuchino", "Te Verde", "Infusion de llerbas(manzanilla, limon)"};
+char *bebidasCalientes[] = {"Americano", "Latte", "Capuchino", "Te Verde", "Infusion de hierbas (manzanilla, limon)"};
 float preciosBebidasCalientes[] = {30.0, 40.0, 45.0, 50.0, 25.0};
 int caloriasBebidasCalientes[] = {5, 150, 120, 100, 0};
 char *bebidasFrias[] = {"Americano Frio", "Frappe de Chocolate", "Frappe de Matcha", "Frappe de Cafe Clasico", "Frappe de Moka"};
@@ -119,6 +120,27 @@ void mostrarBebidasCalientes() {
     for (i = 0; i < 5; i++) {
         printf("%d. %s - $%.2f - %d calorias\n", i + 1, bebidasCalientes[i], preciosBebidasCalientes[i], caloriasBebidasCalientes[i]);
     }
+    // Ejemplo de personalización
+    printf("Seleccione una bebida caliente para personalizar:\n");
+    int seleccion;
+    scanf("%d", &seleccion);
+    if (seleccion > 0 && seleccion <= 5) {
+        printf("¿Desea agregar leche? (1: Si, 0: No): ");
+        int leche;
+        scanf("%d", &leche);
+        if (leche) {
+            printf("Leche agregada.\n");
+        }
+        printf("¿Desea agregar azúcar? (1: Si, 0: No): ");
+        int azucar;
+        scanf("%d", &azucar);
+        if (azucar) {
+            printf("Azúcar agregada.\n");
+        }
+        agregarAlCarrito(bebidasCalientes[seleccion - 1], preciosBebidasCalientes[seleccion - 1], caloriasBebidasCalientes[seleccion - 1]);
+    } else {
+        printf("Opcion no valida\n");
+    }
 }
 
 void mostrarBebidasFrias() {
@@ -132,6 +154,27 @@ void mostrarSnacks() {
     printf("Menu de Snacks:\n");
     for (i = 0; i < 5; i++) {
         printf("%d. %s - $%.2f - %d calorias\n", i + 1, snacks[i], preciosSnacks[i], caloriasSnacks[i]);
+    }
+    // Ejemplo de personalización
+    printf("Seleccione un snack para personalizar:\n");
+    int seleccion;
+    scanf("%d", &seleccion);
+    if (seleccion == 1) { // Yogurt con Fruta y Granola
+        printf("Seleccione el tipo de yogurt (1: Natural, 2: Fresa): ");
+        int tipoYogurt;
+        scanf("%d", &tipoYogurt);
+        printf("Seleccione la fruta (1: Manzana, 2: Plátano, 3: Fresa): ");
+        int tipoFruta;
+        scanf("%d", &tipoFruta);
+        printf("¿Desea agregar granola? (1: Si, 0: No): ");
+        int granola;
+        scanf("%d", &granola);
+        printf("Yogurt personalizado agregado al carrito.\n");
+        agregarAlCarrito(snacks[seleccion - 1], preciosSnacks[seleccion - 1], caloriasSnacks[seleccion - 1]);
+    } else if (seleccion > 0 && seleccion <= 5) {
+        agregarAlCarrito(snacks[seleccion - 1], preciosSnacks[seleccion - 1], caloriasSnacks[seleccion - 1]);
+    } else {
+        printf("Opcion no valida\n");
     }
 }
 
@@ -171,6 +214,28 @@ void aplicarDescuento(float *total) {
         printf("Descuento del 10%% adicional por combo desayuno.\n");
         *total *= 0.90;
     }
+
+    // Descuento adicional para estudiantes de la UNAM
+    char cuentaUNAM[10];
+    printf("Ingrese su número de cuenta de la UNAM (9 dígitos) para un descuento adicional: ");
+    scanf("%s", cuentaUNAM);
+    if (verificarCuentaUNAM(cuentaUNAM)) {
+        printf("Descuento del 15%% adicional aplicado por ser estudiante de la UNAM.\n");
+        *total *= 0.85;
+    }
+}
+
+int verificarCuentaUNAM(char *cuenta) {
+    // Verificar que la cuenta tenga exactamente 9 dígitos
+    if (strlen(cuenta) == 9) {
+        for (int i = 0; i < 9; i++) {
+            if (!isdigit(cuenta[i])) {
+                return 0; // No es un dígito
+            }
+        }
+        return 1; // Cuenta válida
+    }
+    return 0; // Cuenta inválida
 }
 
 void pagar() {
