@@ -47,6 +47,7 @@ float carritoPrecios[50];
 int carritoCalorias[50];
 int carritoCantidad = 0;
 float total=0.0, dinero;
+static float dineroInicial=250.00;
 char usuario[20];
 int i, j;
 
@@ -327,8 +328,7 @@ void iniciarSesion() {
 void registrarUsuario() {
     char contrasena[20];
     int disponible;
-    float saldoArchivo;
-    
+	
     printf("Usuario: ");
     scanf("%s", usuario);
     printf("Contrasena: ");
@@ -342,11 +342,11 @@ void registrarUsuario() {
     
 	disponible=usuarioDisponible(usuario);
 	if (disponible==1){
-		fprintf(archivo, "%s %s %d\n", usuario, contrasena, saldoArchivo=250.00);
+		fprintf(archivo, "%s %s %d\n", usuario, contrasena, dineroInicial);
 		printf("Usuario registrado con exito.\n");
 	}else{
 		printf("El nombre de usuario ya ha sido registrado o ha ocurrido un error\n");
-		return;
+		registrarUsuario();
 	}
 	
     fclose(archivo);
@@ -373,7 +373,8 @@ int usuarioDisponible(char usuarioVerificar[20]) {
 }
 
 int verificarUsuario(char *usuario, char *contrasena) {
-    char usuarioArchivo[20], contrasenaArchivo[20];
+    
+	char usuarioArchivo[20], contrasenaArchivo[20];
     float saldoArchivo;
     FILE *archivo = fopen("usuarios.txt", "r");
     if (archivo == NULL) {
@@ -383,7 +384,7 @@ int verificarUsuario(char *usuario, char *contrasena) {
 
     while (fscanf(archivo, "%s %s %f", usuarioArchivo, contrasenaArchivo, &saldoArchivo) != EOF) {
         if (strcmp(usuario, usuarioArchivo) == 0 && strcmp(contrasena, contrasenaArchivo) == 0) {
-            dinero = saldoArchivo; // Asignar el saldo al variable global
+            dineroInicial = saldoArchivo; // Asignar el saldo al variable global
             fclose(archivo);
             return 1;
         }
@@ -394,6 +395,7 @@ int verificarUsuario(char *usuario, char *contrasena) {
 
 void pagar() {
 	int cantidadIngresada;
+	dinero=dineroInicial;
     if (dinero >= total) {
         dinero -= total;
         printf("Pago realizado con éxito. ¡Gracias por su compra!\n");
@@ -613,3 +615,4 @@ void eliminarUsuario(){
     remove("usuarios.txt");
     rename("temp.txt", "usuarios.txt");
 }
+
