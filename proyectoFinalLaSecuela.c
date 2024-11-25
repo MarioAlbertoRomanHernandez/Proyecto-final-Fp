@@ -89,7 +89,7 @@ int main() {
                 printf("Atencion al cliente: soporte@cafesync.com\n");
                 break;
             case 4:
-                printf("Gracias por visitar nuestra cafeteria. ¡Hasta luego! :D\n");
+                printf("Gracias por visitar nuestra cafeteria. Hasta luego! :D\n");
                 break;
             default:
                 printf("Opcion no valida. Intente de nuevo.\n");
@@ -149,7 +149,7 @@ void mostrarMenu() {
 	            break;
 	        case 4:
 	            mostrarCarrito();
-	            printf("¿Desea proceder al pago? (1: Si, 0: No): ");
+	            printf("Desea proceder al pago? (1: Si, 0: No): ");
 	            int proceder;
 	            scanf("%d", &proceder);
 	            if (proceder) {
@@ -177,10 +177,10 @@ void personalizarBebidaCaliente(int seleccion) {
         printf("Tipo de leche \n1: Entera \n2: Deslactosada \n3: Almendra \n4: Coco\n Seleccione uno: ");
         int tipoLeche;
         scanf("%d", &tipoLeche);
-        printf("¿Desea agregar azucar? (1: Si, 0: No): ");
+        printf("Desea agregar azucar? (1: Si, 0: No): ");
         int azucar;
         scanf("%d", &azucar);
-        printf("¿Desea agregar crema? (1: Si, 0: No): ");
+        printf("Desea agregar crema? (1: Si, 0: No): ");
         int crema;
         scanf("%d", &crema);
         printf("Bebida personalizada agregada al carrito.\n");
@@ -214,7 +214,7 @@ void personalizarSnack(int seleccion) {
         for (j = 0; j < 3; j++) {
             scanf("%d", &frutas[j]);
         }
-        printf("¿Desea agregar granola? (1: Si, 0: No): ");
+        printf("Desea agregar granola? (1: Si, 0: No): ");
         int granola;
         scanf("%d", &granola);
         printf("Yogurt personalizado agregado al carrito.\n");
@@ -397,7 +397,7 @@ void pagar() {
 	int cantidadIngresada;
     if (dinero >= total) {
         dinero -= total;
-        printf("Pago realizado con éxito. ¡Gracias por su compra!\n");
+        printf("Pago realizado con exito. Gracias por su compra!\n");
         printf("Usted cuenta con $%.2f\n", dinero);
         // Actualizar datos del usuario en el archivo
         actualizarUsuario(usuario); // usuarioActual es el usuario que ha iniciado sesión
@@ -457,7 +457,7 @@ int verificarAdmin(char *usuario, char *contrasena) {
     char usuarioArchivo[20], contrasenaArchivo[20];
     FILE *archivo = fopen("admins.txt", "r");
     if (archivo == NULL) {
-        printf("No se encontró el archivo de usuarios Administradores\n");
+        printf("No se encontro el archivo de usuarios Administradores\n");
         return 0; // Error al abrir el archivo
     }
 
@@ -477,13 +477,13 @@ void menuAdmin(){ //Acciones para administradores
     printf("1. Cambiar Menu\n");
     printf("2. Eliminar usuario\n");
 	printf("3. Salir\n");
-    printf("Seleccione una opción: ");
+    printf("Seleccione una opcion: ");
     scanf("%d", &opcion);
     do{
     	switch(opcion){
     		case 1:
     			printf("Cambiar Menu\n 1. Bebidas Calientes\n 2. Bebidas Frias\n 3. Snacks\n 4. Salir\n");
-				printf("¿Que desea cambiar?: ");
+				printf("Que desea cambiar?: ");
 				scanf("%i", &cambio);
 				cambiarMenu(cambio);				
     			break;
