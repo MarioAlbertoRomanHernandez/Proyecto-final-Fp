@@ -361,9 +361,8 @@ int usuarioDisponible(char usuarioVerificar[20]) {
     }
 
     char usuarioArchivo[20], contrasenaArchivo[20];
-    int compras;
 
-    while (fscanf(archivo, "%s %s %d", usuarioArchivo, contrasenaArchivo, &compras) != EOF) {     //Verificar si el usuario ya existe
+    while (fscanf(archivo, "%s %s %d", usuarioArchivo, contrasenaArchivo, &dinero) != EOF) {     //Verificar si el usuario ya existe
         if (strcmp(usuarioArchivo, usuarioVerificar) == 0) {
             fclose(archivo);
             return 0; // Usuario ya existe
@@ -490,20 +489,29 @@ void menuAdmin(){ //Acciones para administradores
     			break;
     		case 2:
     			mostrarUsuarios();
-    			eliminarUsuario();
+    			printf("Desea realizar cambios?\n");
+    			printf("Digite 1 para afirmar: ");
+    			scanf("%d", &cambio);
+    			if (cambio==1){
+    				eliminarUsuario();
+				}else{
+					return;
+				}
 				break;
 			case 3:
 				printf("Saliendo...\n");
 				break;
+				
     		default:
     			printf("Ingrese una opcion valida\n");
+    			break;
 		}	
 	}while(opcion!=3);
 }
 
 void mostrarUsuarios(){
 	char usuario[20], contrasena[20];
-    int compras,indice=0;
+    int indice=0;
     
     FILE *archivo = fopen("usuarios.txt", "r");
     if (archivo==NULL) {
@@ -511,8 +519,8 @@ void mostrarUsuarios(){
         return;
     }
     printf("Usuarios registrados:\n");
-    while (fscanf(archivo, "%s %s %d", usuario, contrasena, &compras) != EOF) {
-        printf("%i Usuario: %s, Intentos de inicio de sesión: %d\n", indice, usuario, compras);
+    while (fscanf(archivo, "%s %s %f", usuario, contrasena, &dinero) != EOF) {
+        printf("%i Usuario: %s, Dinero: %f\n", indice, usuario, dinero);
         indice++;
     }
 
@@ -593,18 +601,18 @@ void eliminarUsuario(){
 
     char usuario[20], contrasena[20];
     printf("Ingrese el nombre de usuario a eliminar: ");
-       scanf("%s", &usuario);
+    scanf("%s", &usuario);
 
     char usuarioArchivo[20], contrasenaArchivo[20];
-    int compras, usuarioEncontrado = 0;
+    int usuarioEncontrado = 0;
 
-    while (fscanf(archivo, "%s %s %d", usuarioArchivo, contrasenaArchivo, &compras) != EOF) { //Copiar usuarios al nuevo archivo
+    while (fscanf(archivo, "%s %s %f", usuarioArchivo, contrasenaArchivo, &dinero) != EOF) { //Copiar usuarios al nuevo archivo
         if (strcmp(usuarioArchivo, usuario) == 0) {
             usuarioEncontrado = 1;
             printf("\nUsuario %s eliminado con exito.\n", usuario);
             continue; // Omite al usuario
         }
-        fprintf(temporal, "%s %s %d\n", usuarioArchivo, contrasenaArchivo, compras);
+        fprintf(temporal, "%s %s %f\n", usuarioArchivo, contrasenaArchivo, dinero);
     }
     if (!usuarioEncontrado) {
         printf("Usuario no encontrado\n");
