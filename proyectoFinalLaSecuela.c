@@ -16,12 +16,13 @@ void mostrarCarrito();
 void aplicarDescuento(float *total);
 void iniciarSesion();
 void registrarUsuario();
-void pagar();
 void actualizarUsuario(char *usuario);
 void administradores();
 void menuAdmin();
 void mostrarUsuarios();
 void eliminarUsuario();
+void pagar();
+void aumentarDinero(float cantidad);
 void actualizarUsuario(char *usuario);
 void cambiarMenu(int numeroCambio);
 int usuarioDisponible(char usuarioVerificar[]);
@@ -392,6 +393,7 @@ int verificarUsuario(char *usuario, char *contrasena) {
 }
 
 void pagar() {
+	int cantidadIngresada;
     if (dinero >= total) {
         dinero -= total;
         printf("Pago realizado con éxito. ¡Gracias por su compra!\n");
@@ -399,8 +401,22 @@ void pagar() {
         // Actualizar datos del usuario en el archivo
         actualizarUsuario(usuario); // usuarioActual es el usuario que ha iniciado sesión
     } else {
-        printf("Necesita pagar $%.2f en efectivo\n", total - dinero);
+        printf("Necesita pagar $%.2f\n", total - dinero);
+        printf("Desea ingresar dinero a su cuenta?\n Digite 1 para afirmar\n");
+    	int afirmacion;
+        if(afirmacion==1){
+        	printf("Ingrese el monto a agregar a su saldo\n");
+        	scanf("%f", &cantidadIngresada);
+        	aumentarDinero(cantidadIngresada);
+		}
+		printf("No se puede realizar la compra\n");
     }
+}
+
+void aumentarDinero(float cantidad) {
+    dinero += cantidad;
+    printf("Se han agregado $%.2f a su saldo. Nuevo saldo: $%.2f\n", cantidad, dinero);
+    actualizarUsuario(usuario); // Actualizar el archivo después de aumentar el dinero
 }
 
 void actualizarUsuario(char *usuario) {
