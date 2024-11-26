@@ -57,6 +57,10 @@ float dineroInicial=250.00;
 char usuario[20];
 int i, j;
 
+// Declaracion de sucursales y direcciones
+char sucursales[2][50] = {"Sucursal 1", "Sucursal 2"};
+char direcciones[2][100] = {"Direccion 1", "Direccion 2"};
+
 int main() {
     int opc;
     printf("Bienvenido a la Cafeteria Cafesyinc\n");
