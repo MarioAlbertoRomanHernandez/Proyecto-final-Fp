@@ -189,12 +189,25 @@ void personalizarBebidaCaliente(int seleccion) {
         printf("Tipo de leche \n1: Entera \n2: Deslactosada \n3: Almendra \n4: Coco\n Seleccione uno: ");
         int tipoLeche;
         scanf("%d", &tipoLeche);
-        printf("Desea agregar azucar? (1: Si, 0: No): ");
+
         int azucar;
-        scanf("%d", &azucar);
-        printf("Desea agregar crema? (1: Si, 0: No): ");
+        do {
+            printf("Desea agregar azucar? (1: Si, 0: No): ");
+            scanf("%d", &azucar);
+            if (azucar != 1 && azucar != 0) {
+                printf("Opcion no valida. Por favor, ingrese 1 para Si o 0 para No.\n");
+            }
+        } while (azucar != 1 && azucar != 0);
+
         int crema;
-        scanf("%d", &crema);
+        do {
+            printf("Desea agregar crema? (1: Si, 0: No): ");
+            scanf("%d", &crema);
+            if (crema != 1 && crema != 0) {
+                printf("Opcion no valida. Por favor, ingrese 1 para Si o 0 para No.\n");
+            }
+        } while (crema != 1 && crema != 0);
+
         printf("Bebida personalizada agregada al carrito.\n");
         agregarAlCarrito(bebidasCalientes[seleccion - 1], preciosBebidasCalientes[seleccion - 1], caloriasBebidasCalientes[seleccion - 1]);
     } else {
