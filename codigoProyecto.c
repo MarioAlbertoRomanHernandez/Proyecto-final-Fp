@@ -746,7 +746,7 @@ void contactar() {
     printf("Contactar:\n");
     printf("1. Programador Guadalupe (guadalupe01@gmail.com)\n");
     printf("2. Programador Mario (albertomario1708@gmail.com)\n");
-    printf("3. Atención al Cliente (soporte@cafesync.com)\n");
-    printf("4. Sucursal Facultad de Ingeniería (+52 55 1234 5678)\n");
+    printf("3. Atencion al cliente (soporte@cafesync.com)\n");
+    printf("4. Sucursal Facultad de Ingenieria (+52 55 1234 5678)\n");
     printf("5. Sucursal Facultad de Medicina (+52 55 8765 4321)\n");
 }
