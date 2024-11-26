@@ -297,7 +297,7 @@ void aplicarDescuento(float *total) {
 }
 
 int verificarCuentaUNAM(char *cuenta) {
-    // Verificar que la cuenta tenga exactamente 9 digitos
+    // Verificar que la cuenta es de 9 digitos
     if (strlen(cuenta) != 9) {
         return 0; // Cuenta no valida
     }
@@ -375,7 +375,7 @@ int usuarioDisponible(char usuarioVerificar[20]) {
     while (fscanf(archivo, "%s %s %f", usuarioArchivo, contrasenaArchivo, &saldoArchivo) != EOF) { // Verificar si el usuario ya existe
         if (strcmp(usuarioArchivo, usuarioVerificar) == 0) {
             fclose(archivo);
-            return 0; // Usuario ya existe
+            return 0; // Usuario no existe
         }
     }
     fclose(archivo);
@@ -393,7 +393,7 @@ int verificarUsuario(char *usuario, char *contrasena) {
 
     while (fscanf(archivo, "%s %s %f", usuarioArchivo, contrasenaArchivo, &saldoArchivo) != EOF) {
         if (strcmp(usuario, usuarioArchivo) == 0 && strcmp(contrasena, contrasenaArchivo) == 0) {
-            dinero = saldoArchivo; // Asignar el saldo a la variable global
+            dinero = saldoArchivo; // Asignar el saldo
             fclose(archivo);
             return 1;
         }
