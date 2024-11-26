@@ -443,15 +443,14 @@ void actualizarUsuario(char *usuario) {
     rename("temp.txt", "usuarios.txt");
 }
 
-void administradores() {
-    FILE *archivo = fopen("admins.txt", "a+");
-    if (archivo == NULL) {
-        printf("Error al abrir el archivo de administradores.\n");
-        return;
-    }
-    fprintf(archivo, "%s %s\n", "Mario", "Marioh17$");
-    fprintf(archivo, "%s %s\n", "Guadalupe", "N0l0s3");
-    fclose(archivo);
+void administradores(){
+	FILE *archivo = fopen("admins.txt", "w");
+	if (archivo==NULL){
+		FILE *archivo = fopen("admins.txt", "a");
+	}
+	fprintf(archivo, "%s %s\n", "Mario", "Marioh17$");
+	fprintf(archivo, "%s %s\n", "Guadalupe", "N0l0s3");
+	fclose(archivo);
 }
 
 int verificarAdmin(char* usuario, char* contrasena) {
