@@ -162,7 +162,12 @@ void mostrarMenu() {
     } while(opcion != 6);
 }
 
-void mostrarBebidasCalientes() {
+eccion == 1) { // Yogurt con fruta y granola
+        printf("Seleccione el tipo de yogurt (1: Natural, 2: Fresa): ");
+        int tipoYogurt;
+        scanf("%d", &tipoYogurt);
+        printf("Seleccione hasta 3 frutas (1: Mango, 2: Manzana, 3: Sandia, 4: Kiwi, 5: Naranja, 6: Jicama, 7: Melon, 8: Platano): ");
+        int fvoid mostrarBebidasCalientes() {
     leerMenuBebidasCalientes();
     printf("Menu de Bebidas Calientes:\n");
     for (i = 0; i < 5; i++) {
@@ -219,12 +224,7 @@ void personalizarBebidaCaliente(int seleccion) {
 
 void personalizarSnack(int seleccion) {
 
-       if (seleccion == 1) { // Yogurt con fruta y granola
-        printf("Seleccione el tipo de yogurt (1: Natural, 2: Fresa): ");
-        int tipoYogurt;
-        scanf("%d", &tipoYogurt);
-        printf("Seleccione hasta 3 frutas (1: Mango, 2: Manzana, 3: Sandia, 4: Kiwi, 5: Naranja, 6: Jicama, 7: Melon, 8: Platano): ");
-        int frutas[3];
+       if (selrutas[3];
         for (j = 0; j < 3; j++) {
             scanf("%d", &frutas[j]);
         }
