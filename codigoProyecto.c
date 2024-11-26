@@ -441,17 +441,15 @@ void administradores() {
     fclose(archivo);
 }
 
-int verificarAdmin(char *usuario, char *contrasena) {
+int verificarAdmin(char* usuario, char* contrasena) {
+    FILE *archivo = fopen("usuarios.txt", "r");
     char usuarioArchivo[20], contrasenaArchivo[20];
-    FILE *archivo = fopen("admins.txt", "r");
+
     if (archivo == NULL) {
-        printf("No se encontro el archivo de usuarios Administradores\n");
+        printf("No se pudo abrir el archivo de usuarios\n");
         return 0; // Error al abrir el archivo
     }
-}
-void menuAdmin() {
-    int opcion, cambio;
-    do {
+
     while (fscanf(archivo, "%s %s", usuarioArchivo, contrasenaArchivo) != EOF) {
         if (strcmp(usuarioArchivo, usuario) == 0 && strcmp(contrasenaArchivo, contrasena) == 0) {
             fclose(archivo);
@@ -460,7 +458,6 @@ void menuAdmin() {
     }
     fclose(archivo);
     return 0; // Credenciales incorrectas
-}
 }
 
 void menuAdmin() {
@@ -522,6 +519,7 @@ void mostrarUsuarios() {
 
     fclose(archivo);
 }
+
 void cambiarMenu(int opcionCambio) {
     int productoSeleccionado;
     char nuevoProducto[50];
