@@ -497,7 +497,6 @@ void menuAdmin() {
                 break;
             default:
                 printf("Ingrese una opcion valida\n");
-                break;
         }
     } while (opcion != 4);
 }
