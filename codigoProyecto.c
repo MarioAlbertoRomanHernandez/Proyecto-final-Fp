@@ -545,6 +545,7 @@ void cambiarMenu(int opcionCambio) {
                     strcpy(bebidasCalientes[productoSeleccionado - 1], nuevoProducto);
                     preciosBebidasCalientes[productoSeleccionado - 1] = nuevoPrecio;
                     caloriasBebidasCalientes[productoSeleccionado - 1] = nuevasCalorias;
+                    printf("Bebida actualizada: %s - $%.2f - %d calorias\n", bebidasCalientes[productoSeleccionado - 1], preciosBebidasCalientes[productoSeleccionado - 1], caloriasBebidasCalientes[productoSeleccionado - 1]);
                 } else {
                     printf("Opcion no valida\n");
                 }
@@ -566,6 +567,7 @@ void cambiarMenu(int opcionCambio) {
                     strcpy(bebidasFrias[productoSeleccionado - 1], nuevoProducto);
                     preciosBebidasFrias[productoSeleccionado - 1] = nuevoPrecio;
                     caloriasBebidasFrias[productoSeleccionado - 1] = nuevasCalorias;
+                    printf("Bebida actualizada: %s - $%.2f - %d calorias\n", bebidasFrias[productoSeleccionado - 1], preciosBebidasFrias[productoSeleccionado - 1], caloriasBebidasFrias[productoSeleccionado - 1]);
                 } else {
                     printf("Opcion no valida\n");
                 }
@@ -587,6 +589,7 @@ void cambiarMenu(int opcionCambio) {
                     strcpy(snacks[productoSeleccionado - 1], nuevoProducto);
                     preciosSnacks[productoSeleccionado - 1] = nuevoPrecio;
                     caloriasSnacks[productoSeleccionado - 1] = nuevasCalorias;
+                    printf("Snack actualizado: %s - $%.2f - %d calorias\n", snacks[productoSeleccionado - 1], preciosSnacks[productoSeleccionado - 1], caloriasSnacks[productoSeleccionado - 1]);
                 } else {
                     printf("Opcion no valida\n");
                 }
@@ -599,7 +602,6 @@ void cambiarMenu(int opcionCambio) {
         }
     } while (opcionCambio != 4);
 }
-
 void eliminarUsuario() {
     FILE *archivo = fopen("usuarios.txt", "r");
     FILE *temporal = fopen("temp.txt", "w+");
