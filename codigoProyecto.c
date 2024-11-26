@@ -284,7 +284,7 @@ void aplicarDescuento(float *total) {
     char cuentaUNAM[10];
     int descuento;
     printf("Forma parte de la comunidad UNAM?\n");
-    printf("Digite 1 si la respuesta es afirmativa\n");
+    printf("Digite 1 si la respuesta es afirmativa, si no es asi digite cualquier otro numero \n");
     scanf("%d", &descuento);
     if (descuento == 1) {
         printf("Ingrese su numero de cuenta de la UNAM (9 digitos) para un descuento adicional: ");
