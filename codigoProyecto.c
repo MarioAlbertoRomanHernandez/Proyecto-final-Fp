@@ -537,12 +537,13 @@ void cambiarMenu(int opcionCambio) {
                     while (getchar() != '\n'); // Limpiar el buffer de entrada
                     fgets(nuevoProducto, sizeof(nuevoProducto), stdin);
                     nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de linea
-                    strcpy(bebidasCalientes[productoSeleccionado - 1], nuevoProducto);
                     printf("Ingrese el costo de la nueva bebida: ");
                     scanf("%f", &nuevoPrecio);
-                    preciosBebidasCalientes[productoSeleccionado - 1] = nuevoPrecio;
                     printf("Ingrese las calorias de la nueva bebida: ");
                     scanf("%d", &nuevasCalorias);
+                    // Actualizar los valores en los arrays
+                    strcpy(bebidasCalientes[productoSeleccionado - 1], nuevoProducto);
+                    preciosBebidasCalientes[productoSeleccionado - 1] = nuevoPrecio;
                     caloriasBebidasCalientes[productoSeleccionado - 1] = nuevasCalorias;
                 } else {
                     printf("Opcion no valida\n");
@@ -557,12 +558,13 @@ void cambiarMenu(int opcionCambio) {
                     while (getchar() != '\n'); // Limpiar el buffer de entrada
                     fgets(nuevoProducto, sizeof(nuevoProducto), stdin);
                     nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de linea
-                    strcpy(bebidasFrias[productoSeleccionado - 1], nuevoProducto);
                     printf("Ingrese el costo de la nueva bebida: ");
                     scanf("%f", &nuevoPrecio);
-                    preciosBebidasFrias[productoSeleccionado - 1] = nuevoPrecio;
                     printf("Ingrese las calorias de la nueva bebida: ");
                     scanf("%d", &nuevasCalorias);
+                    // Actualizar los valores en los arrays
+                    strcpy(bebidasFrias[productoSeleccionado - 1], nuevoProducto);
+                    preciosBebidasFrias[productoSeleccionado - 1] = nuevoPrecio;
                     caloriasBebidasFrias[productoSeleccionado - 1] = nuevasCalorias;
                 } else {
                     printf("Opcion no valida\n");
@@ -577,12 +579,13 @@ void cambiarMenu(int opcionCambio) {
                     while (getchar() != '\n'); // Limpiar el buffer de entrada
                     fgets(nuevoProducto, sizeof(nuevoProducto), stdin);
                     nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de linea
-                    strcpy(snacks[productoSeleccionado - 1], nuevoProducto);
                     printf("Ingrese el costo del nuevo snack: ");
                     scanf("%f", &nuevoPrecio);
-                    preciosSnacks[productoSeleccionado - 1] = nuevoPrecio;
                     printf("Ingrese las calorias del nuevo snack: ");
                     scanf("%d", &nuevasCalorias);
+                    // Actualizar los valores en los arrays
+                    strcpy(snacks[productoSeleccionado - 1], nuevoProducto);
+                    preciosSnacks[productoSeleccionado - 1] = nuevoPrecio;
                     caloriasSnacks[productoSeleccionado - 1] = nuevasCalorias;
                 } else {
                     printf("Opcion no valida\n");
