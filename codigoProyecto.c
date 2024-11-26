@@ -565,7 +565,7 @@ void cambiarMenu(int opcionCambio) {
                     printf("Costo de la nueva bebida: %.2f\n", nuevoPrecio); // Mensaje de depuración
                     printf("Ingrese las calorias de la nueva bebida: ");
                     scanf("%d", &nuevasCalorias);
-                    printf("Calorias de la nueva bebida: %d\n", nuevasCalorias); // Mensaje de depuración
+                    printf("Calorias de la nueva bebida: %d\n", nuevasCalorias); // Mensaje de depuracion
                     // Actualizar los valores en los arrays
                     strcpy(bebidasCalientes[productoSeleccionado - 1], nuevoProducto);
                     preciosBebidasCalientes[productoSeleccionado - 1] = nuevoPrecio;
@@ -616,7 +616,7 @@ void cambiarMenu(int opcionCambio) {
                     printf("Ingrese las calorias del nuevo snack: ");
                     scanf("%d", &nuevasCalorias);
                     printf("Calorias del nuevo snack: %d\n", nuevasCalorias); // Mensaje de depuración
-                    // Actualizar los valores en los arrays
+                    // Actualizar los valores en los arreglos
                     strcpy(snacks[productoSeleccionado - 1], nuevoProducto);
                     preciosSnacks[productoSeleccionado - 1] = nuevoPrecio;
                     caloriasSnacks[productoSeleccionado - 1] = nuevasCalorias;
