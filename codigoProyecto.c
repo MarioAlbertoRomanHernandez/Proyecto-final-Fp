@@ -444,7 +444,7 @@ void actualizarUsuario(char *usuario) {
 }
 
 void administradores() {
-    FILE *archivo = fopen("admins.txt", "a+");
+    FILE *archivo = fopen("admins.txt", "w"); // Cambiado a "w" para sobrescribir el archivo
     if (archivo == NULL) {
         printf("Error al abrir el archivo de administradores.\n");
         return;
