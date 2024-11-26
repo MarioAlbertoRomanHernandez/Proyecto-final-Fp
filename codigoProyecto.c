@@ -605,12 +605,15 @@ void cambiarMenu(int opcionCambio) {
                 break;
             case 4:
                 printf("Regresando...\n");
-                break;
+                return; // Salir del bucle y de la función
             default:
                 printf("Ingrese una opcion valida\n");
         }
+        printf("Que desea cambiar?: ");
+        scanf("%d", &opcionCambio); // Leer la siguiente opción
     } while (opcionCambio != 4);
 }
+
 void eliminarUsuario() {
     FILE *archivo = fopen("usuarios.txt", "r");
     FILE *temporal = fopen("temp.txt", "w+");
