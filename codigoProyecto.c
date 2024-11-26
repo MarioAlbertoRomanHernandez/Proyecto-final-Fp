@@ -534,7 +534,7 @@ void cambiarMenu(int opcionCambio) {
                 scanf("%d", &productoSeleccionado);
                 if (productoSeleccionado > 0 && productoSeleccionado <= 5) {
                     printf("Ingrese el nombre de la nueva bebida: ");
-                    getchar(); // Limpiar el buffer
+                    while (getchar() != '\n'); // Limpiar el buffer de entrada
                     fgets(nuevoProducto, sizeof(nuevoProducto), stdin);
                     nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de linea
                     strcpy(bebidasCalientes[productoSeleccionado - 1], nuevoProducto);
@@ -554,7 +554,7 @@ void cambiarMenu(int opcionCambio) {
                 scanf("%d", &productoSeleccionado);
                 if (productoSeleccionado > 0 && productoSeleccionado <= 5) {
                     printf("Ingrese el nombre de la nueva bebida: ");
-                    getchar(); // Limpiar el buffer
+                    while (getchar() != '\n'); // Limpiar el buffer de entrada
                     fgets(nuevoProducto, sizeof(nuevoProducto), stdin);
                     nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de linea
                     strcpy(bebidasFrias[productoSeleccionado - 1], nuevoProducto);
@@ -574,7 +574,7 @@ void cambiarMenu(int opcionCambio) {
                 scanf("%d", &productoSeleccionado);
                 if (productoSeleccionado > 0 && productoSeleccionado <= 5) {
                     printf("Ingrese el nombre del nuevo snack: ");
-                    getchar(); // Limpiar el buffer
+                    while (getchar() != '\n'); // Limpiar el buffer de entrada
                     fgets(nuevoProducto, sizeof(nuevoProducto), stdin);
                     nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de linea
                     strcpy(snacks[productoSeleccionado - 1], nuevoProducto);
