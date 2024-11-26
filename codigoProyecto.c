@@ -24,7 +24,6 @@ void mostrarUsuarios();
 void eliminarUsuario();
 void pagar();
 void aumentarDinero(float cantidad);
-void actualizarUsuario(char *usuario);
 void cambiarMenu(int numeroCambio);
 int usuarioDisponible(char usuarioVerificar[]);
 int verificarUsuario(char *usuario, char *contrasena);
@@ -156,42 +155,6 @@ void mostrarMenu() {
     } while(opcion != 5);
 }
 
-void leerMenuBebidasCalientes() {
-    FILE *archivo = fopen("menu_bebidas_calientes.txt", "r");
-    if (archivo == NULL) {
-        printf("Error al abrir el archivo de bebidas calientes.\n");
-        return;
-    }
-    for (i = 0; i < 5; i++) {
-        fscanf(archivo, "%s %f %d", bebidasCalientes[i], &preciosBebidasCalientes[i], &caloriasBebidasCalientes[i]);
-    }
-    fclose(archivo);
-}
-
-void leerMenuBebidasFrias() {
-    FILE *archivo = fopen("menu_bebidas_frias.txt", "r");
-    if (archivo == NULL) {
-        printf("Error al abrir el archivo de bebidas frias.\n");
-        return;
-    }
-    for (i = 0; i < 5; i++) {
-        fscanf(archivo, "%s %f %d", bebidasFrias[i], &preciosBebidasFrias[i], &caloriasBebidasFrias[i]);
-    }
-    fclose(archivo);
-}
-
-void leerMenuSnacks() {
-    FILE *archivo = fopen("menu_snacks.txt", "r");
-    if (archivo == NULL) {
-        printf("Error al abrir el archivo de snacks.\n");
-        return;
-    }
-    for (i = 0; i < 5; i++) {
-        fscanf(archivo, "%s %f %d", snacks[i], &preciosSnacks[i], &caloriasSnacks[i]);
-    }
-    fclose(archivo);
-}
-
 void mostrarBebidasCalientes() {
     leerMenuBebidasCalientes();
     printf("Menu de Bebidas Calientes:\n");
@@ -215,6 +178,7 @@ void mostrarSnacks() {
         printf("%d. %s - $%.2f - %d calorias\n", i + 1, snacks[i], preciosSnacks[i], caloriasSnacks[i]);
     }
 }
+
 void personalizarBebidaCaliente(int seleccion) {
     if (seleccion > 0 && seleccion <= 5) {
         printf("Tipo de leche \n1: Entera \n2: Deslactosada \n3: Almendra \n4: Coco\n Seleccione uno: ");
@@ -421,6 +385,7 @@ int verificarUsuario(char *usuario, char *contrasena) {
     fclose(archivo);
     return 0;
 }
+
 void pagar() {
     int cantidadIngresada;
     if (dinero >= total) {
@@ -485,11 +450,11 @@ void administradores() {
 }
 
 int verificarAdmin(char* usuario, char* contrasena) {
-    FILE *archivo = fopen("usuarios.txt", "r");
+    FILE *archivo = fopen("admins.txt", "r");
     char usuarioArchivo[20], contrasenaArchivo[20];
 
     if (archivo == NULL) {
-        printf("No se pudo abrir el archivo de usuarios\n");
+        printf("No se pudo abrir el archivo de administradores\n");
         return 0; // Error al abrir el archivo
     }
 
@@ -724,6 +689,7 @@ void eliminarUsuario() {
     remove("usuarios.txt");
     rename("temp.txt", "usuarios.txt");
 }
+
 void modificarPromociones() {
     printf("Modificar Promociones:\n");
     printf("1. Descuento por semana de examenes\n");
@@ -763,38 +729,38 @@ void modificarPromociones() {
     }
 }
 
-void escribirMenuBebidasCalientes() {
-    FILE *archivo = fopen("menu_bebidas_calientes.txt", "w");
+void leerMenuBebidasCalientes() {
+    FILE *archivo = fopen("menu_bebidas_calientes.txt", "r");
     if (archivo == NULL) {
         printf("Error al abrir el archivo de bebidas calientes.\n");
         return;
     }
     for (i = 0; i < 5; i++) {
-        fprintf(archivo, "%s %.2f %d\n", bebidasCalientes[i], preciosBebidasCalientes[i], caloriasBebidasCalientes[i]);
+        fscanf(archivo, "%s %f %d", bebidasCalientes[i], &preciosBebidasCalientes[i], &caloriasBebidasCalientes[i]);
     }
     fclose(archivo);
 }
 
-void escribirMenuBebidasFrias() {
-    FILE *archivo = fopen("menu_bebidas_frias.txt", "w");
+void leerMenuBebidasFrias() {
+    FILE *archivo = fopen("menu_bebidas_frias.txt", "r");
     if (archivo == NULL) {
         printf("Error al abrir el archivo de bebidas frias.\n");
         return;
     }
     for (i = 0; i < 5; i++) {
-        fprintf(archivo, "%s %.2f %d\n", bebidasFrias[i], preciosBebidasFrias[i], caloriasBebidasFrias[i]);
+        fscanf(archivo, "%s %f %d", bebidasFrias[i], &preciosBebidasFrias[i], &caloriasBebidasFrias[i]);
     }
     fclose(archivo);
 }
 
-void escribirMenuSnacks() {
-    FILE *archivo = fopen("menu_snacks.txt", "w");
+void leerMenuSnacks() {
+    FILE *archivo = fopen("menu_snacks.txt", "r");
     if (archivo == NULL) {
         printf("Error al abrir el archivo de snacks.\n");
         return;
     }
     for (i = 0; i < 5; i++) {
-        fprintf(archivo, "%s %.2f %d\n", snacks[i], preciosSnacks[i], caloriasSnacks[i]);
+        fscanf(archivo, "%s %f %d", snacks[i], &preciosSnacks[i], &caloriasSnacks[i]);
     }
     fclose(archivo);
 }
