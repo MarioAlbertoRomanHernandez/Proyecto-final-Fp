@@ -613,7 +613,6 @@ void cambiarMenu(int opcionCambio) {
         scanf("%d", &opcionCambio); // Leer la siguiente opción
     } while (opcionCambio != 4);
 }
-
 void eliminarUsuario() {
     FILE *archivo = fopen("usuarios.txt", "r");
     FILE *temporal = fopen("temp.txt", "w+");
