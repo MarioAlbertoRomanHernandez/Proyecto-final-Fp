@@ -34,6 +34,7 @@ void leerMenuSnacks();
 void escribirMenuBebidasCalientes();
 void escribirMenuBebidasFrias();
 void escribirMenuSnacks();
+void contactar();
 
 //variables globales
 char bebidasCalientes[5][50];
@@ -106,7 +107,8 @@ void mostrarMenu() {
         printf("2. Bebidas Frias\n");
         printf("3. Snacks\n");
         printf("4. Ver carrito\n");
-        printf("5. Salir\n");
+        printf("5. Contactar\n");
+        printf("6. Salir\n");
         scanf("%d", &opcion);
         switch (opcion) {
             case 1:
@@ -149,12 +151,15 @@ void mostrarMenu() {
                 }
                 break;
             case 5:
+                contactar();
+                break;
+            case 6:
                 printf("Saliendo al menu principal...\n");
                 break;
             default:
                 printf("Ingrese una opcion valida\n");
         }
-    } while(opcion != 5);
+    } while(opcion != 6);
 }
 
 void mostrarBebidasCalientes() {
@@ -735,4 +740,13 @@ void leerMenuSnacks() {
         fscanf(archivo, "%s %f %d", snacks[i], &preciosSnacks[i], &caloriasSnacks[i]);
     }
     fclose(archivo);
+}
+
+void contactar() {
+    printf("Contactar:\n");
+    printf("1. Programador Guadalupe (guadalupe01@gmail.com)\n");
+    printf("2. Programador Mario (albertomario1708@gmail.com)\n");
+    printf("3. Atención al Cliente (soporte@cafesync.com)\n");
+    printf("4. Sucursal Facultad de Ingeniería (+52 55 1234 5678)\n");
+    printf("5. Sucursal Facultad de Medicina (+52 55 8765 4321)\n");
 }
