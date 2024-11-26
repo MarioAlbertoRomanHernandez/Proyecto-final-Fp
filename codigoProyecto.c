@@ -448,7 +448,9 @@ int verificarAdmin(char *usuario, char *contrasena) {
         printf("No se encontro el archivo de usuarios Administradores\n");
         return 0; // Error al abrir el archivo
     }
-
+void menuAdmin() {
+    int opcion, cambio;
+    do {
     while (fscanf(archivo, "%s %s", usuarioArchivo, contrasenaArchivo) != EOF) {
         if (strcmp(usuarioArchivo, usuario) == 0 && strcmp(contrasenaArchivo, contrasena) == 0) {
             fclose(archivo);
