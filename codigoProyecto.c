@@ -28,7 +28,6 @@ int usuarioDisponible(char usuarioVerificar[]);
 int verificarUsuario(char *usuario, char *contrasena);
 int verificarCuentaUNAM(char *cuenta);
 int verificarAdmin(char *usuario, char *contrasena);
-void modificarPromociones();
 void leerMenuBebidasCalientes();
 void leerMenuBebidasFrias();
 void leerMenuSnacks();
@@ -490,8 +489,7 @@ void menuAdmin() {
         printf("\n     Menu Administrador   \n");
         printf("1. Cambiar Menu\n");
         printf("2. Eliminar usuario\n");
-        printf("3. Modificar Promociones\n");
-        printf("4. Salir\n");
+        printf("3. Salir\n");
         printf("Seleccione una opcion: ");
         scanf("%d", &opcion);
         switch (opcion) {
@@ -513,15 +511,12 @@ void menuAdmin() {
                 }
                 break;
             case 3:
-                modificarPromociones();
-                break;
-            case 4:
                 printf("Saliendo...\n");
                 break;
             default:
                 printf("Ingrese una opcion valida\n");
         }
-    } while (opcion != 4);
+    } while (opcion != 3);
 }
 
 void mostrarUsuarios() {
@@ -704,45 +699,6 @@ void eliminarUsuario() {
     fclose(temporal);
     remove("usuarios.txt");
     rename("temp.txt", "usuarios.txt");
-}
-
-void modificarPromociones() {
-    printf("Modificar Promociones:\n");
-    printf("1. Descuento por semana de examenes\n");
-    printf("2. Descuento por ser de la UNAM\n");
-    printf("3. Descuento por combo desayuno\n");
-    printf("4. Salir\n");
-    int opcion;
-    printf("Seleccione una opcion: ");
-    scanf("%d", &opcion);
-    switch (opcion) {
-        case 1:
-            printf("Ingrese el nuevo porcentaje de descuento por semana de examenes: ");
-            float descuentoExamenes;
-            scanf("%f", &descuentoExamenes);
-            // Aqui puedes guardar el nuevo descuento en una variable global o archivo
-            printf("Descuento por semana de examenes actualizado a %.2f%%\n", descuentoExamenes);
-            break;
-        case 2:
-            printf("Ingrese el nuevo porcentaje de descuento por ser de la UNAM: ");
-            float descuentoUNAM;
-            scanf("%f", &descuentoUNAM);
-            // Aqui puedes guardar el nuevo descuento en una variable global o archivo
-            printf("Descuento por ser de la UNAM actualizado a %.2f%%\n", descuentoUNAM);
-            break;
-        case 3:
-            printf("Ingrese el nuevo porcentaje de descuento por combo desayuno: ");
-            float descuentoDesayuno;
-            scanf("%f", &descuentoDesayuno);
-            // Aqui puedes guardar el nuevo descuento en una variable global o archivo
-            printf("Descuento por combo desayuno actualizado a %.2f%%\n", descuentoDesayuno);
-            break;
-        case 4:
-            printf("Regresando...\n");
-            break;
-        default:
-            printf("Ingrese una opcion valida\n");
-    }
 }
 
 void leerMenuBebidasCalientes() {
