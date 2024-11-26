@@ -214,7 +214,8 @@ void personalizarBebidaCaliente(int seleccion) {
 }
 
 void personalizarSnack(int seleccion) {
-    if (seleccion == 1) { // Yogurt con Fruta y Granola
+
+       if (seleccion == 1) { // Yogurt con fruta y granola
         printf("Seleccione el tipo de yogurt (1: Natural, 2: Fresa): ");
         int tipoYogurt;
         scanf("%d", &tipoYogurt);
@@ -278,7 +279,7 @@ void aplicarDescuento(float *total) {
         *total *= 0.90;
     }
 
-    // Descuento adicional para estudiantes de la UNAM
+    // Descuento para alumnos de la UNAM
     char cuentaUNAM[10];
     int descuento;
     printf("Forma parte de la comunidad UNAM?\n");
@@ -408,7 +409,7 @@ void pagar() {
         dinero -= total;
         printf("Pago realizado con exito. Gracias por su compra!\n");
         printf("Usted cuenta con $%.2f\n", dinero);
-        // Actualizar datos del usuario en el archivo
+        // Actualizar datos del archivo
         actualizarUsuario(usuario);
     } else {
         printf("Necesita pagar $%.2f\n", total - dinero);
@@ -555,10 +556,10 @@ void cambiarMenu(int opcionCambio) {
                 scanf("%d", &productoSeleccionado);
                 if (productoSeleccionado > 0 && productoSeleccionado <= 5) {
                     printf("Ingrese el nombre de la nueva bebida: ");
-                    while (getchar() != '\n'); // Limpiar el buffer de entrada
+                    while (getchar() != '\n'); // Limpiar el buffer
                     fgets(nuevoProducto, sizeof(nuevoProducto), stdin);
-                    nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de linea
-                    printf("Nombre de la nueva bebida: %s\n", nuevoProducto); // Mensaje de depuración
+                    nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar salto de linea
+                    printf("Nombre de la nueva bebida: %s\n", nuevoProducto); // Mensaje de depuracion
                     printf("Ingrese el costo de la nueva bebida: ");
                     scanf("%f", &nuevoPrecio);
                     printf("Costo de la nueva bebida: %.2f\n", nuevoPrecio); // Mensaje de depuración
