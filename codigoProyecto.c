@@ -162,7 +162,8 @@ void mostrarMenu() {
     } while(opcion != 6);
 }
 
-eccion == 1) { // Yogurt con fruta y granola
+void personalizarSnack(int seleccion);{
+(seleccion == 1) { // Yogurt con fruta y granola
         printf("Seleccione el tipo de yogurt (1: Natural, 2: Fresa): ");
         int tipoYogurt;
         scanf("%d", &tipoYogurt);
@@ -173,6 +174,7 @@ eccion == 1) { // Yogurt con fruta y granola
     for (i = 0; i < 5; i++) {
         printf("%d. %s - $%.2f - %d calorias\n", i + 1, bebidasCalientes[i], preciosBebidasCalientes[i], caloriasBebidasCalientes[i]);
     }
+}
 }
 
 void mostrarBebidasFrias() {
