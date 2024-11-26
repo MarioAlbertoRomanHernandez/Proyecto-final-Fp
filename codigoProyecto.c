@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 
-// Declaración de funciones
+// Declaracion de funciones
 void mostrarSucursales();
 void menuOriginal();
 void mostrarMenu();
@@ -71,7 +71,7 @@ int main() {
             printf("Acceso concedido. Bienvenido al Menu Administrador.\n");
             menuAdmin();
         } else {
-            printf("Acceso denegado. Usuario o contraseña incorrectos.\n");
+            printf("Acceso denegado. Usuario o contrasena incorrectos.\n");
         }
     } else if (opc == 2) {
         mostrarSucursales();
@@ -190,6 +190,7 @@ void mostrarSnacks() {
         printf("%d. %s - $%.2f - %d calorias\n", i + 1, snacks[i], preciosSnacks[i], caloriasSnacks[i]);
     }
 }
+
 void personalizarSnack(int seleccion) {
     if (seleccion == 1) { // Yogurt con Fruta y Granola
         printf("Seleccione el tipo de yogurt (1: Natural, 2: Fresa): ");
@@ -405,7 +406,7 @@ void pagar() {
 void aumentarDinero(float cantidad) {
     dinero += cantidad;
     printf("Se han agregado $%.2f a su saldo. Nuevo saldo: $%.2f\n", cantidad, dinero);
-    actualizarUsuario(usuario); // Actualizar el archivo después de aumentar el dinero
+    actualizarUsuario(usuario); // Actualizar el archivo despues de aumentar el dinero
 }
 void actualizarUsuario(char *usuario) {
     char usuarioArchivo[20], contrasenaArchivo[20];
@@ -463,7 +464,7 @@ int verificarAdmin(char* usuario, char* contrasena) {
 void menuAdmin() {
     int opcion, cambio;
     do {
-        printf("\n     Menú Administrador   \n");
+        printf("\n     Menu Administrador   \n");
         printf("1. Cambiar Menu\n");
         printf("2. Eliminar usuario\n");
         printf("3. Modificar Promociones\n");
@@ -535,7 +536,7 @@ void cambiarMenu(int opcionCambio) {
                     printf("Ingrese el nombre de la nueva bebida: ");
                     getchar(); // Limpiar el buffer
                     fgets(nuevoProducto, sizeof(nuevoProducto), stdin);
-                    nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de línea
+                    nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de linea
                     strcpy(bebidasCalientes[productoSeleccionado - 1], nuevoProducto);
                     printf("Ingrese el costo de la nueva bebida: ");
                     scanf("%f", &nuevoPrecio);
@@ -555,7 +556,7 @@ void cambiarMenu(int opcionCambio) {
                     printf("Ingrese el nombre de la nueva bebida: ");
                     getchar(); // Limpiar el buffer
                     fgets(nuevoProducto, sizeof(nuevoProducto), stdin);
-                    nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de línea
+                    nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de linea
                     strcpy(bebidasFrias[productoSeleccionado - 1], nuevoProducto);
                     printf("Ingrese el costo de la nueva bebida: ");
                     scanf("%f", &nuevoPrecio);
@@ -575,7 +576,7 @@ void cambiarMenu(int opcionCambio) {
                     printf("Ingrese el nombre del nuevo snack: ");
                     getchar(); // Limpiar el buffer
                     fgets(nuevoProducto, sizeof(nuevoProducto), stdin);
-                    nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de línea
+                    nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de linea
                     strcpy(snacks[productoSeleccionado - 1], nuevoProducto);
                     printf("Ingrese el costo del nuevo snack: ");
                     scanf("%f", &nuevoPrecio);
@@ -644,21 +645,21 @@ void modificarPromociones() {
             printf("Ingrese el nuevo porcentaje de descuento por semana de examenes: ");
             float descuentoExamenes;
             scanf("%f", &descuentoExamenes);
-            // Aquí puedes guardar el nuevo descuento en una variable global o archivo
+            // Aqui puedes guardar el nuevo descuento en una variable global o archivo
             printf("Descuento por semana de examenes actualizado a %.2f%%\n", descuentoExamenes);
             break;
         case 2:
             printf("Ingrese el nuevo porcentaje de descuento por ser de la UNAM: ");
             float descuentoUNAM;
             scanf("%f", &descuentoUNAM);
-            // Aquí puedes guardar el nuevo descuento en una variable global o archivo
+            // Aqui puedes guardar el nuevo descuento en una variable global o archivo
             printf("Descuento por ser de la UNAM actualizado a %.2f%%\n", descuentoUNAM);
             break;
         case 3:
             printf("Ingrese el nuevo porcentaje de descuento por combo desayuno: ");
             float descuentoDesayuno;
             scanf("%f", &descuentoDesayuno);
-            // Aquí puedes guardar el nuevo descuento en una variable global o archivo
+            // Aqui puedes guardar el nuevo descuento en una variable global o archivo
             printf("Descuento por combo desayuno actualizado a %.2f%%\n", descuentoDesayuno);
             break;
         case 4:
