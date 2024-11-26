@@ -1,5 +1,5 @@
-Americano Frio 50.00 15
-Frappe de chocolate 55.00 300
-Frappe de matcha 60.00 250
-Frappe de cafe clasico 50.00 200
-Frappe de Moka  65.00 200
+AmericanoFrio 50.00 15
+FrappeDechocolate 55.00 300
+FrappeDematcha 60.00 250
+FrappeDeCafeClasico 50.00 200
+FrappeDeMoka  65.00 200
