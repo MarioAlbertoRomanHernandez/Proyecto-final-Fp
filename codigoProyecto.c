@@ -442,7 +442,6 @@ void actualizarUsuario(char *usuario) {
     remove("usuarios.txt");
     rename("temp.txt", "usuarios.txt");
 }
-
 void administradores() {
     FILE *archivo = fopen("admins.txt", "w"); // Cambiado a "w" para sobrescribir el archivo
     if (archivo == NULL) {
