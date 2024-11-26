@@ -31,19 +31,23 @@ int verificarUsuario(char *usuario, char *contrasena);
 int verificarCuentaUNAM(char *cuenta);
 int verificarAdmin(char *usuario, char *contrasena);
 void modificarPromociones();
+void leerMenuBebidasCalientes();
+void leerMenuBebidasFrias();
+void leerMenuSnacks();
+void escribirMenuBebidasCalientes();
+void escribirMenuBebidasFrias();
+void escribirMenuSnacks();
 
 // Variables globales
-char *sucursales[] = {"Facultad de Ingenieria", "Facultad de Medicina"};
-char *direcciones[] = {"Cerca de CU, Facultad de Ingenieria", "Cerca de CU, Facultad de Medicina"};
-char *bebidasCalientes[] = {"Americano", "Latte", "Capuchino", "Te Verde", "Infusion de hierbas (manzanilla, limon)"};
-float preciosBebidasCalientes[] = {30.0, 40.0, 45.0, 50.0, 25.0};
-int caloriasBebidasCalientes[] = {5, 150, 120, 100, 0};
-char *bebidasFrias[] = {"Americano Frio", "Frappe de Chocolate", "Frappe de Matcha", "Frappe de Cafe Clasico", "Frappe de Moka"};
-float preciosBebidasFrias[] = {45.0, 55.0, 60.0, 50.0, 65.0};
-int caloriasBebidasFrias[] = {15, 300, 250, 200, 280};
-char *snacks[] = {"Yogurt con Fruta y Granola", "Ensalada", "Wrap Integral", "Barrita de Avena y Frutos Secos", "Fruta"};
-float preciosSnacks[] = {50.0, 60.0, 75.0, 15.0, 45.0};
-int caloriasSnacks[] = {310, 130, 250, 220, 50};
+char bebidasCalientes[5][50];
+float preciosBebidasCalientes[5];
+int caloriasBebidasCalientes[5];
+char bebidasFrias[5][50];
+float preciosBebidasFrias[5];
+int caloriasBebidasFrias[5];
+char snacks[5][50];
+float preciosSnacks[5];
+int caloriasSnacks[5];
 char *carritoProductos[50];
 float carritoPrecios[50];
 int carritoCalorias[50];
@@ -152,13 +156,65 @@ void mostrarMenu() {
     } while(opcion != 5);
 }
 
+void leerMenuBebidasCalientes() {
+    FILE *archivo = fopen("menu_bebidas_calientes.txt", "r");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo de bebidas calientes.\n");
+        return;
+    }
+    for (i = 0; i < 5; i++) {
+        fscanf(archivo, "%s %f %d", bebidasCalientes[i], &preciosBebidasCalientes[i], &caloriasBebidasCalientes[i]);
+    }
+    fclose(archivo);
+}
+
+void leerMenuBebidasFrias() {
+    FILE *archivo = fopen("menu_bebidas_frias.txt", "r");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo de bebidas frias.\n");
+        return;
+    }
+    for (i = 0; i < 5; i++) {
+        fscanf(archivo, "%s %f %d", bebidasFrias[i], &preciosBebidasFrias[i], &caloriasBebidasFrias[i]);
+    }
+    fclose(archivo);
+}
+
+void leerMenuSnacks() {
+    FILE *archivo = fopen("menu_snacks.txt", "r");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo de snacks.\n");
+        return;
+    }
+    for (i = 0; i < 5; i++) {
+        fscanf(archivo, "%s %f %d", snacks[i], &preciosSnacks[i], &caloriasSnacks[i]);
+    }
+    fclose(archivo);
+}
+
 void mostrarBebidasCalientes() {
+    leerMenuBebidasCalientes();
     printf("Menu de Bebidas Calientes:\n");
     for (i = 0; i < 5; i++) {
         printf("%d. %s - $%.2f - %d calorias\n", i + 1, bebidasCalientes[i], preciosBebidasCalientes[i], caloriasBebidasCalientes[i]);
     }
 }
 
+void mostrarBebidasFrias() {
+    leerMenuBebidasFrias();
+    printf("Menu de Bebidas Frias:\n");
+    for (i = 0; i < 5; i++) {
+        printf("%d. %s - $%.2f - %d calorias\n", i + 1, bebidasFrias[i], preciosBebidasFrias[i], caloriasBebidasFrias[i]);
+    }
+}
+
+void mostrarSnacks() {
+    leerMenuSnacks();
+    printf("Menu de Snacks:\n");
+    for (i = 0; i < 5; i++) {
+        printf("%d. %s - $%.2f - %d calorias\n", i + 1, snacks[i], preciosSnacks[i], caloriasSnacks[i]);
+    }
+}
 void personalizarBebidaCaliente(int seleccion) {
     if (seleccion > 0 && seleccion <= 5) {
         printf("Tipo de leche \n1: Entera \n2: Deslactosada \n3: Almendra \n4: Coco\n Seleccione uno: ");
@@ -174,20 +230,6 @@ void personalizarBebidaCaliente(int seleccion) {
         agregarAlCarrito(bebidasCalientes[seleccion - 1], preciosBebidasCalientes[seleccion - 1], caloriasBebidasCalientes[seleccion - 1]);
     } else {
         printf("Opcion no valida\n");
-    }
-}
-
-void mostrarBebidasFrias() {
-    printf("Menu de Bebidas Frias:\n");
-    for (i = 0; i < 5; i++) {
-        printf("%d. %s - $%.2f - %d calorias\n", i + 1, bebidasFrias[i], preciosBebidasFrias[i], caloriasBebidasFrias[i]);
-    }
-}
-
-void mostrarSnacks() {
-    printf("Menu de Snacks:\n");
-    for (i = 0; i < 5; i++) {
-        printf("%d. %s - $%.2f - %d calorias\n", i + 1, snacks[i], preciosSnacks[i], caloriasSnacks[i]);
     }
 }
 
@@ -379,7 +421,6 @@ int verificarUsuario(char *usuario, char *contrasena) {
     fclose(archivo);
     return 0;
 }
-
 void pagar() {
     int cantidadIngresada;
     if (dinero >= total) {
@@ -408,6 +449,7 @@ void aumentarDinero(float cantidad) {
     printf("Se han agregado $%.2f a su saldo. Nuevo saldo: $%.2f\n", cantidad, dinero);
     actualizarUsuario(usuario); // Actualizar el archivo despues de aumentar el dinero
 }
+
 void actualizarUsuario(char *usuario) {
     char usuarioArchivo[20], contrasenaArchivo[20];
     float saldoArchivo;
@@ -547,7 +589,7 @@ void cambiarMenu(int opcionCambio) {
                     strcpy(bebidasCalientes[productoSeleccionado - 1], nuevoProducto);
                     preciosBebidasCalientes[productoSeleccionado - 1] = nuevoPrecio;
                     caloriasBebidasCalientes[productoSeleccionado - 1] = nuevasCalorias;
-                    printf("Bebida actualizada: %s - $%.2f - %d calorias\n", bebidasCalientes[productoSeleccionado - 1], preciosBebidasCalientes[productoSeleccionado - 1], caloriasBebidasCalientes[productoSeleccionado - 1]);
+                    escribirMenuBebidasCalientes(); // Guardar cambios en el archivo
                 } else {
                     printf("Opcion no valida\n");
                 }
@@ -572,7 +614,7 @@ void cambiarMenu(int opcionCambio) {
                     strcpy(bebidasFrias[productoSeleccionado - 1], nuevoProducto);
                     preciosBebidasFrias[productoSeleccionado - 1] = nuevoPrecio;
                     caloriasBebidasFrias[productoSeleccionado - 1] = nuevasCalorias;
-                    printf("Bebida actualizada: %s - $%.2f - %d calorias\n", bebidasFrias[productoSeleccionado - 1], preciosBebidasFrias[productoSeleccionado - 1], caloriasBebidasFrias[productoSeleccionado - 1]);
+                    escribirMenuBebidasFrias(); // Guardar cambios en el archivo
                 } else {
                     printf("Opcion no valida\n");
                 }
@@ -597,7 +639,7 @@ void cambiarMenu(int opcionCambio) {
                     strcpy(snacks[productoSeleccionado - 1], nuevoProducto);
                     preciosSnacks[productoSeleccionado - 1] = nuevoPrecio;
                     caloriasSnacks[productoSeleccionado - 1] = nuevasCalorias;
-                    printf("Snack actualizado: %s - $%.2f - %d calorias\n", snacks[productoSeleccionado - 1], preciosSnacks[productoSeleccionado - 1], caloriasSnacks[productoSeleccionado - 1]);
+                    escribirMenuSnacks(); // Guardar cambios en el archivo
                 } else {
                     printf("Opcion no valida\n");
                 }
@@ -612,6 +654,43 @@ void cambiarMenu(int opcionCambio) {
         scanf("%d", &opcionCambio); // Leer la siguiente opción
     } while (opcionCambio != 4);
 }
+
+void escribirMenuBebidasCalientes() {
+    FILE *archivo = fopen("menu_bebidas_calientes.txt", "w");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo de bebidas calientes.\n");
+        return;
+    }
+    for (i = 0; i < 5; i++) {
+        fprintf(archivo, "%s %.2f %d\n", bebidasCalientes[i], preciosBebidasCalientes[i], caloriasBebidasCalientes[i]);
+    }
+    fclose(archivo);
+}
+
+void escribirMenuBebidasFrias() {
+    FILE *archivo = fopen("menu_bebidas_frias.txt", "w");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo de bebidas frias.\n");
+        return;
+    }
+    for (i = 0; i < 5; i++) {
+        fprintf(archivo, "%s %.2f %d\n", bebidasFrias[i], preciosBebidasFrias[i], caloriasBebidasFrias[i]);
+    }
+    fclose(archivo);
+}
+
+void escribirMenuSnacks() {
+    FILE *archivo = fopen("menu_snacks.txt", "w");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo de snacks.\n");
+        return;
+    }
+    for (i = 0; i < 5; i++) {
+        fprintf(archivo, "%s %.2f %d\n", snacks[i], preciosSnacks[i], caloriasSnacks[i]);
+    }
+    fclose(archivo);
+}
+
 void eliminarUsuario() {
     FILE *archivo = fopen("usuarios.txt", "r");
     FILE *temporal = fopen("temp.txt", "w+");
@@ -645,7 +724,6 @@ void eliminarUsuario() {
     remove("usuarios.txt");
     rename("temp.txt", "usuarios.txt");
 }
-
 void modificarPromociones() {
     printf("Modificar Promociones:\n");
     printf("1. Descuento por semana de examenes\n");
@@ -683,4 +761,40 @@ void modificarPromociones() {
         default:
             printf("Ingrese una opcion valida\n");
     }
+}
+
+void escribirMenuBebidasCalientes() {
+    FILE *archivo = fopen("menu_bebidas_calientes.txt", "w");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo de bebidas calientes.\n");
+        return;
+    }
+    for (i = 0; i < 5; i++) {
+        fprintf(archivo, "%s %.2f %d\n", bebidasCalientes[i], preciosBebidasCalientes[i], caloriasBebidasCalientes[i]);
+    }
+    fclose(archivo);
+}
+
+void escribirMenuBebidasFrias() {
+    FILE *archivo = fopen("menu_bebidas_frias.txt", "w");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo de bebidas frias.\n");
+        return;
+    }
+    for (i = 0; i < 5; i++) {
+        fprintf(archivo, "%s %.2f %d\n", bebidasFrias[i], preciosBebidasFrias[i], caloriasBebidasFrias[i]);
+    }
+    fclose(archivo);
+}
+
+void escribirMenuSnacks() {
+    FILE *archivo = fopen("menu_snacks.txt", "w");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo de snacks.\n");
+        return;
+    }
+    for (i = 0; i < 5; i++) {
+        fprintf(archivo, "%s %.2f %d\n", snacks[i], preciosSnacks[i], caloriasSnacks[i]);
+    }
+    fclose(archivo);
 }
