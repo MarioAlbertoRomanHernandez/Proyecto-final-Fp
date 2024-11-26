@@ -537,10 +537,13 @@ void cambiarMenu(int opcionCambio) {
                     while (getchar() != '\n'); // Limpiar el buffer de entrada
                     fgets(nuevoProducto, sizeof(nuevoProducto), stdin);
                     nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de linea
+                    printf("Nombre de la nueva bebida: %s\n", nuevoProducto); // Mensaje de depuración
                     printf("Ingrese el costo de la nueva bebida: ");
                     scanf("%f", &nuevoPrecio);
+                    printf("Costo de la nueva bebida: %.2f\n", nuevoPrecio); // Mensaje de depuración
                     printf("Ingrese las calorias de la nueva bebida: ");
                     scanf("%d", &nuevasCalorias);
+                    printf("Calorias de la nueva bebida: %d\n", nuevasCalorias); // Mensaje de depuración
                     // Actualizar los valores en los arrays
                     strcpy(bebidasCalientes[productoSeleccionado - 1], nuevoProducto);
                     preciosBebidasCalientes[productoSeleccionado - 1] = nuevoPrecio;
@@ -559,10 +562,13 @@ void cambiarMenu(int opcionCambio) {
                     while (getchar() != '\n'); // Limpiar el buffer de entrada
                     fgets(nuevoProducto, sizeof(nuevoProducto), stdin);
                     nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de linea
+                    printf("Nombre de la nueva bebida: %s\n", nuevoProducto); // Mensaje de depuración
                     printf("Ingrese el costo de la nueva bebida: ");
                     scanf("%f", &nuevoPrecio);
+                    printf("Costo de la nueva bebida: %.2f\n", nuevoPrecio); // Mensaje de depuración
                     printf("Ingrese las calorias de la nueva bebida: ");
                     scanf("%d", &nuevasCalorias);
+                    printf("Calorias de la nueva bebida: %d\n", nuevasCalorias); // Mensaje de depuración
                     // Actualizar los valores en los arrays
                     strcpy(bebidasFrias[productoSeleccionado - 1], nuevoProducto);
                     preciosBebidasFrias[productoSeleccionado - 1] = nuevoPrecio;
@@ -581,10 +587,13 @@ void cambiarMenu(int opcionCambio) {
                     while (getchar() != '\n'); // Limpiar el buffer de entrada
                     fgets(nuevoProducto, sizeof(nuevoProducto), stdin);
                     nuevoProducto[strcspn(nuevoProducto, "\n")] = 0; // Eliminar el salto de linea
+                    printf("Nombre del nuevo snack: %s\n", nuevoProducto); // Mensaje de depuración
                     printf("Ingrese el costo del nuevo snack: ");
                     scanf("%f", &nuevoPrecio);
+                    printf("Costo del nuevo snack: %.2f\n", nuevoPrecio); // Mensaje de depuración
                     printf("Ingrese las calorias del nuevo snack: ");
                     scanf("%d", &nuevasCalorias);
+                    printf("Calorias del nuevo snack: %d\n", nuevasCalorias); // Mensaje de depuración
                     // Actualizar los valores en los arrays
                     strcpy(snacks[productoSeleccionado - 1], nuevoProducto);
                     preciosSnacks[productoSeleccionado - 1] = nuevoPrecio;
