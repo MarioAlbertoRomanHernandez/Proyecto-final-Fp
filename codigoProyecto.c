@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>
 
+
 // Declaracion de funciones
 void mostrarSucursales();
 void menuOriginal();
