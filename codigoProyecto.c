@@ -58,8 +58,8 @@ char usuario[20];
 int i, j;
 
 // Declaracion de sucursales y direcciones
-char sucursales[2][50] = {"Sucursal 1", "Sucursal 2"};
-char direcciones[2][100] = {"Direccion 1", "Direccion 2"};
+char sucursales[2][50] = {"Facultad de ingenieria", "facultad de Medicina"};
+char direcciones[2][100] = {"CU anexo de ingenieria ", "CU entrando por la calle de medicina"};
 
 int main() {
     int opc;
