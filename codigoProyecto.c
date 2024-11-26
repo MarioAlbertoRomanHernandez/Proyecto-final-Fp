@@ -3,8 +3,6 @@
 #include <string.h>
 #include <time.h>
 
-
-// Declaracion de funciones
 void mostrarSucursales();
 void menuOriginal();
 void mostrarMenu();
@@ -38,7 +36,7 @@ void escribirMenuBebidasCalientes();
 void escribirMenuBebidasFrias();
 void escribirMenuSnacks();
 
-// Variables globales
+//variables globales
 char bebidasCalientes[5][50];
 float preciosBebidasCalientes[5];
 int caloriasBebidasCalientes[5];
@@ -57,7 +55,7 @@ float dineroInicial=250.00;
 char usuario[20];
 int i, j;
 
-// Declaracion de sucursales y direcciones
+//Variables de sucursal y direccion
 char sucursales[2][50] = {"Facultad de ingenieria", "facultad de Medicina"};
 char direcciones[2][100] = {"CU anexo de ingenieria ", "CU entrando por la calle de medicina"};
 
