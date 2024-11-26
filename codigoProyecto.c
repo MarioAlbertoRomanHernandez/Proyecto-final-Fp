@@ -162,7 +162,7 @@ void mostrarMenu() {
     } while(opcion != 6);
 }
 
-void personalizarSnack(int seleccion);{
+void personalizarSnack(int seleccion); {
 (seleccion == 1) { // Yogurt con fruta y granola
         printf("Seleccione el tipo de yogurt (1: Natural, 2: Fresa): ");
         int tipoYogurt;
