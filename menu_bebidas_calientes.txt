@@ -1,5 +1,5 @@
 Americano 30.00 5
 Latte 40.00 150
 Capuchino 45.00 120
-TeVerde 50.00 100
+Te_De_Manzanilla 1000.00 13
 InfusionDeHierbas(Manzanilla,Limon) 25.00 0
